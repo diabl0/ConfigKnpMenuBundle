@@ -78,7 +78,7 @@ my_mega_menu:
             order: An integer to sort the item in his level.
             attributes: An array of attributes passed to the knp item
             linkAttributes: An array of attributes passed to the a tag
-            childrenAttributes: An array of attributes passed to the chidlren block
+            childrenAttributes: An array of attributes passed to the children block
             labelAttributes: An array of attributes passed to the label tag
             display: boolean to hide the item
             displayChildren: boolean to hide the children
