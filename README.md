@@ -35,7 +35,7 @@ Then enable it in your AppKernel.php with the KnpMenuBundle :
 $bundles = array(
     ...
     new Knp\Bundle\MenuBundle\KnpMenuBundle(),
-    new Jb\Bundle\ConfigKnpMenuBundle\JbConfigKnpMenuBundle(),
+    new CKMB\Bundle\ConfigKnpMenuBundle\JbConfigKnpMenuBundle(),
 );
 ```
 

@@ -1,9 +1,9 @@
 <?php
 
-namespace Jb\Bundle\PhumborBundle\Tests\DependencyInjection;
+namespace CKMB\Bundle\PhumborBundle\Tests\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Jb\Bundle\ConfigKnpMenuBundle\DependencyInjection\JbConfigKnpMenuExtension;
+use CKMB\Bundle\ConfigKnpMenuBundle\DependencyInjection\CKMBConfigKnpMenuExtension;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
 
 /**
@@ -11,7 +11,7 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
  *
  * @author Jonathan Bouzekri <jonathan.bouzekri@gmail.com>
  */
-class JbConfigKnpMenuExtensionTest extends \PHPUnit_Framework_TestCase
+class ConfigKnpMenuExtensionTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * Test loading data from file
@@ -28,7 +28,7 @@ class JbConfigKnpMenuExtensionTest extends \PHPUnit_Framework_TestCase
     public static function loadConfiguration()
     {
         $containerBuilder = self::createContainer();
-        $extension = new JbConfigKnpMenuExtension();
+        $extension = new ConfigKnpMenuExtension();
         $extension->load(array(), $containerBuilder);
 
         return $containerBuilder->getParameter('jb_config.menu.configuration');
@@ -46,9 +46,9 @@ class JbConfigKnpMenuExtensionTest extends \PHPUnit_Framework_TestCase
         $container = new ContainerBuilder(new ParameterBag(array_merge(array(
             'kernel.bundles'     => array(
                 'JbTest1Bundle' =>
-                    'Jb\\Bundle\\ConfigKnpMenuBundle\\Tests\\DependencyInjection\\Fixtures\\Bundle1\\JbTest1Bundle',
+                    'CKMB\\Bundle\\ConfigKnpMenuBundle\\Tests\\DependencyInjection\\Fixtures\\Bundle1\\JbTest1Bundle',
                 'JbTest2Bundle' =>
-                    'Jb\\Bundle\\ConfigKnpMenuBundle\\Tests\\DependencyInjection\\Fixtures\\Bundle2\\JbTest2Bundle'
+                    'CKMB\\Bundle\\ConfigKnpMenuBundle\\Tests\\DependencyInjection\\Fixtures\\Bundle2\\JbTest2Bundle'
             ),
             'kernel.root_dir' => 'app'
         ), $data)));

@@ -11,11 +11,11 @@
 /**
  * @namespace
  */
-namespace Jb\Bundle\ConfigKnpMenuBundle\DependencyInjection;
+namespace CKMB\Bundle\ConfigKnpMenuBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
-use Jb\Bundle\ConfigKnpMenuBundle\Config\Definition\Builder\MenuTreeBuilder;
+use CKMB\Bundle\ConfigKnpMenuBundle\Config\Definition\Builder\MenuTreeBuilder;
 
 /**
  * Configuration for the navigation

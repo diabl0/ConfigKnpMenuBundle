@@ -3,20 +3,20 @@
 /**
  * @namespace
  */
-namespace Jb\Bundle\ConfigKnpMenuBundle\Tests\Provider;
+namespace CKMB\Bundle\ConfigKnpMenuBundle\Tests\Provider;
 
-use Jb\Bundle\ConfigKnpMenuBundle\Provider\ConfigurationMenuProvider;
-use Jb\Bundle\PhumborBundle\Tests\DependencyInjection\JbConfigKnpMenuExtensionTest;
+use CKMB\Bundle\ConfigKnpMenuBundle\Provider\ConfigurationMenuProvider;
+use CKMB\Bundle\PhumborBundle\Tests\DependencyInjection\JbConfigKnpMenuExtensionTest;
 use Knp\Menu\MenuFactory;
 use Knp\Menu\Integration\Symfony\RoutingExtension;
 
 /**
- * Tests for Jb\Bundle\ConfigKnpMenuBundle\Provider\ConfigurationMenuProvider
+ * Tests for CKMB\Bundle\ConfigKnpMenuBundle\Provider\ConfigurationMenuProvider
  */
 class ConfigurationMenuProviderTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Jb\Bundle\ConfigKnpMenuBundle\Provider\ConfigurationMenuProvider
+     * @var \CKMB\Bundle\ConfigKnpMenuBundle\Provider\ConfigurationMenuProvider
      */
     protected $configurationProvider;
 

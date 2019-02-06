@@ -1,9 +1,9 @@
 parameters:
-    jb_config.menu.provider.class: Jb\Bundle\ConfigKnpMenuBundle\Provider\ConfigurationMenuProvider
+    ckmb_config.menu.provider.class: CKMB\Bundle\ConfigKnpMenuBundle\Provider\ConfigurationMenuProvider
 
 services:
-    jb_config.menu.provider:
-        class: '%jb_config.menu.provider.class%'
+    ckmb_config.menu.provider:
+        class: '%ckmb_config.menu.provider.class%'
         arguments:
             - '@knp_menu.factory'
             - '@event_dispatcher'

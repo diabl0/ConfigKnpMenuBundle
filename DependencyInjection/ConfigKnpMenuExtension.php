@@ -11,7 +11,7 @@
 /**
  * @namespace
  */
-namespace Jb\Bundle\ConfigKnpMenuBundle\DependencyInjection;
+namespace CKMB\Bundle\ConfigKnpMenuBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
@@ -25,7 +25,7 @@ use Symfony\Component\Config\Resource\FileResource;
  *
  * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html}
  */
-class JbConfigKnpMenuExtension extends Extension
+class ConfigKnpMenuExtension extends Extension
 {
     /**
      * {@inheritDoc}
@@ -33,14 +33,14 @@ class JbConfigKnpMenuExtension extends Extension
     public function load(array $configs, ContainerBuilder $container)
     {
         $configuredMenus = array();
-        if (is_file($file = $container->getParameter('kernel.root_dir') . '/config/navigation.yml')) {
+        if (is_file($file = $container->getParameter('kernel.root_dir') . '/config/menu.yml')) {
             $configuredMenus = $this->parseFile($file);
             $container->addResource(new FileResource($file));
         }
 
         foreach ($container->getParameter('kernel.bundles') as $bundle) {
             $reflection = new \ReflectionClass($bundle);
-            if (is_file($file = dirname($reflection->getFileName()) . '/Resources/config/navigation.yml')) {
+            if (is_file($file = dirname($reflection->getFileName()) . '/Resources/config/menu.yml')) {
                 $configuredMenus = array_replace_recursive($configuredMenus, $this->parseFile($file));
                 $container->addResource(new FileResource($file));
             }

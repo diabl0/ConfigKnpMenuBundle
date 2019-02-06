@@ -28,7 +28,7 @@
 /**
  * @namespace
  */
-namespace Jb\Bundle\ConfigKnpMenuBundle\Config\Definition\Builder;
+namespace CKMB\Bundle\ConfigKnpMenuBundle\Config\Definition\Builder;
 
 use Symfony\Component\Config\Definition\Builder\NodeBuilder;
 

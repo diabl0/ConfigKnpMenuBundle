@@ -3,17 +3,17 @@
 /**
  * @namespace
  */
-namespace Jb\Bundle\ConfigKnpMenuBundle\Tests\Event;
+namespace CKMB\Bundle\ConfigKnpMenuBundle\Tests\Event;
 
-use Jb\Bundle\ConfigKnpMenuBundle\Event\ConfigureMenuEvent;
+use CKMB\Bundle\ConfigKnpMenuBundle\Event\ConfigureMenuEvent;
 
 /**
- * Tests for Jb\Bundle\ConfigKnpMenuBundle\Event\ConfigureMenuEvent
+ * Tests for CKMB\Bundle\ConfigKnpMenuBundle\Event\ConfigureMenuEvent
  */
 class ConfigureMenuEventTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Jb\Bundle\ConfigKnpMenuBundle\Event\ConfigureMenuEvent
+     * @var \CKMB\Bundle\ConfigKnpMenuBundle\Event\ConfigureMenuEvent
      */
     protected $event;
 

@@ -11,9 +11,9 @@
 /**
  * @namespace
  */
-namespace Jb\Bundle\ConfigKnpMenuBundle\Provider;
+namespace CKMB\Bundle\ConfigKnpMenuBundle\Provider;
 
-use Jb\Bundle\ConfigKnpMenuBundle\Event\ConfigureMenuEvent;
+use CKMB\Bundle\ConfigKnpMenuBundle\Event\ConfigureMenuEvent;
 use Knp\Menu\FactoryInterface;
 use Knp\Menu\Provider\MenuProviderInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;

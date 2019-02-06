@@ -28,12 +28,12 @@
 /**
  * @namespace
  */
-namespace Jb\Bundle\ConfigKnpMenuBundle\Tests\Unit\Config\Definition\Builder;
+namespace CKMB\Bundle\ConfigKnpMenuBundle\Tests\Unit\Config\Definition\Builder;
 
-use Jb\Bundle\ConfigKnpMenuBundle\Config\Definition\Builder\MenuNodeDefinition;
+use CKMB\Bundle\ConfigKnpMenuBundle\Config\Definition\Builder\MenuNodeDefinition;
 
 /**
- * Tests for Jb\Bundle\ConfigKnpMenuBundle\Config\Definition\Builder\MenuNodeDefinition
+ * Tests for CKMB\Bundle\ConfigKnpMenuBundle\Config\Definition\Builder\MenuNodeDefinition
  */
 class MenuNodeDefinitionTest extends \PHPUnit_Framework_TestCase
 {
@@ -53,7 +53,7 @@ class MenuNodeDefinitionTest extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $this->builder = $this
-            ->getMockBuilder('Jb\Bundle\ConfigKnpMenuBundle\Config\Definition\Builder\MenuTreeBuilder')
+            ->getMockBuilder('CKMB\Bundle\ConfigKnpMenuBundle\Config\Definition\Builder\MenuTreeBuilder')
             ->setMethods(
                 array(
                     'node',
@@ -80,7 +80,7 @@ class MenuNodeDefinitionTest extends \PHPUnit_Framework_TestCase
             ->method('node');
 
         $this->assertInstanceOf(
-            'Jb\Bundle\ConfigKnpMenuBundle\Config\Definition\Builder\MenuNodeDefinition',
+            'CKMB\Bundle\ConfigKnpMenuBundle\Config\Definition\Builder\MenuNodeDefinition',
             $this->definition->menuNodeHierarchy(0)
         );
     }

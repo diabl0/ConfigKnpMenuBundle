@@ -1,8 +1,8 @@
 <?php
 
-namespace Jb\Bundle\ConfigKnpMenuBundle\Tests\DependencyInjection;
+namespace CKMB\Bundle\ConfigKnpMenuBundle\Tests\DependencyInjection;
 
-use Jb\Bundle\ConfigKnpMenuBundle\DependencyInjection\NavigationConfiguration;
+use CKMB\Bundle\ConfigKnpMenuBundle\DependencyInjection\NavigationConfiguration;
 use Symfony\Component\Config\Definition\Processor;
 
 /**
@@ -13,7 +13,7 @@ use Symfony\Component\Config\Definition\Processor;
 class NavigationConfigurationTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Jb\Bundle\ConfigKnpMenuBundle\DependencyInjection\NavigationConfiguration
+     * @var \CKMB\Bundle\ConfigKnpMenuBundle\DependencyInjection\NavigationConfiguration
      */
     protected $navigationConfiguration;
 

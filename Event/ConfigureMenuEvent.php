@@ -11,7 +11,7 @@
 /**
  * @namespace
  */
-namespace Jb\Bundle\ConfigKnpMenuBundle\Event;
+namespace CKMB\Bundle\ConfigKnpMenuBundle\Event;
 
 use Knp\Menu\FactoryInterface;
 use Knp\Menu\ItemInterface;
