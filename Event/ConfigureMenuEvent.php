@@ -24,7 +24,7 @@ use Symfony\Component\EventDispatcher\Event;
  */
 class ConfigureMenuEvent extends Event
 {
-    const CONFIGURE = 'jb_config.navigation.menu_configure';
+    const CONFIGURE = 'ckmb_config.navigation.menu_configure';
 
     /**
      * @var \Knp\Menu\FactoryInterface

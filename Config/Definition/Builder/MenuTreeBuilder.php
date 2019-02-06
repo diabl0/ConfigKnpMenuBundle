@@ -46,7 +46,7 @@ class MenuTreeBuilder extends NodeBuilder
     {
         parent::__construct();
 
-        $this->nodeMapping['menu'] = __NAMESPACE__ . '\\MenuNodeDefinition';
+        $this->nodeMapping['tree'] = __NAMESPACE__ . '\\MenuNodeDefinition';
     }
 
     /**
@@ -57,6 +57,6 @@ class MenuTreeBuilder extends NodeBuilder
      */
     public function menuNode($name)
     {
-        return $this->node($name, 'menu');
+        return $this->node($name, 'tree');
     }
 }

@@ -27,15 +27,16 @@ class MenuNodeDefinition extends ArrayNodeDefinition
      *
      * @return MenuNodeDefinition
      */
-    public function menuNodeHierarchy($depth = 10)
+    public function menuNodeHierarchy($depth = 2)
     {
         if ($depth == 0) {
             return $this;
         }
 
         return $this
-            ->prototype('array')
-                ->children()
+            ->useAttributeAsKey('name')
+            ->arrayPrototype()
+            ->children()
                     ->scalarNode('route')->end()
                     ->arrayNode('routeParameters')
                         ->prototype('variable')
@@ -70,7 +71,8 @@ class MenuNodeDefinition extends ArrayNodeDefinition
                         ->prototype('scalar')
                         ->end()
                     ->end()
-                    ->menuNode('children')->menuNodeHierarchy($depth - 1)
+                    ->menuNode('children')
+                        ->menuNodeHierarchy($depth - 1)
                 ->end()
             ->end();
     }

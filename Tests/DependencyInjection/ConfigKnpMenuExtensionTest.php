@@ -31,7 +31,7 @@ class ConfigKnpMenuExtensionTest extends \PHPUnit_Framework_TestCase
         $extension = new ConfigKnpMenuExtension();
         $extension->load(array(), $containerBuilder);
 
-        return $containerBuilder->getParameter('jb_config.menu.configuration');
+        return $containerBuilder->getParameter('ckmb_config.menu.configuration');
     }
 
     /**

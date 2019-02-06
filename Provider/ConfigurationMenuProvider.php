@@ -244,12 +244,7 @@ class ConfigurationMenuProvider implements MenuProviderInterface
     protected function isGranted(array $configuration)
     {
         // If no role configuration. Grant rights.
-        if (!isset($configuration['roles'])) {
-            return true;
-        }
-
-        // If no configuration. Grant rights.
-        if (!is_array($configuration['roles'])) {
+        if (!isset($configuration['roles']) || !is_array($configuration['roles']) || empty($configuration['roles'])) {
             return true;
         }
 

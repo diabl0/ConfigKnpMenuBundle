@@ -13,12 +13,13 @@
  */
 namespace CKMB\Bundle\ConfigKnpMenuBundle\DependencyInjection;
 
-use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\HttpKernel\DependencyInjection\Extension;
-use Symfony\Component\Yaml\Yaml;
-use Symfony\Component\DependencyInjection\Loader;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Config\Resource\FileResource;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Loader;
+use Symfony\Component\HttpKernel\DependencyInjection\Extension;
+use Symfony\Component\Yaml\Yaml;
+use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
 /**
  * This is the class that loads and manages your bundle configuration
@@ -32,40 +33,24 @@ class ConfigKnpMenuExtension extends Extension
      */
     public function load(array $configs, ContainerBuilder $container)
     {
-        $configuredMenus = array();
-        if (is_file($file = $container->getParameter('kernel.root_dir') . '/config/menu.yml')) {
-            $configuredMenus = $this->parseFile($file);
-            $container->addResource(new FileResource($file));
-        }
 
-        foreach ($container->getParameter('kernel.bundles') as $bundle) {
-            $reflection = new \ReflectionClass($bundle);
-            if (is_file($file = dirname($reflection->getFileName()) . '/Resources/config/menu.yml')) {
-                $configuredMenus = array_replace_recursive($configuredMenus, $this->parseFile($file));
-                $container->addResource(new FileResource($file));
-            }
-        }
+        $loader = new YamlFileLoader(
+            $container,
+            new FileLocator(__DIR__.'/../Resources/config')
+        );
+        $loader->load('services.yaml');
 
-        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
-        $loader->load('services.yml');
+        $configuration = new Configuration();
+        $config = $this->processConfiguration($configuration, $configs);
 
-        // validate menu configurations
-        foreach ($configuredMenus as $rootName => $menuConfiguration) {
-            $configuration = new NavigationConfiguration();
-            $configuration->setMenuRootName($rootName);
-            $menuConfiguration[$rootName] = $this->processConfiguration(
-                $configuration,
-                array($rootName => $menuConfiguration)
-            );
-        }
 
         // Set configuration to be used in a custom service
-        $container->setParameter('jb_config.menu.configuration', $configuredMenus);
+        $container->setParameter('ckmb_config.menu.configuration', $config['menu']);
 
         // Last argument of this service is always the menu configuration
         $container
-            ->getDefinition('jb_config.menu.provider')
-            ->addArgument($configuredMenus);
+            ->getDefinition('ckmb_config.menu.provider')
+            ->addArgument($config['menu']);
     }
 
     /**
