@@ -1,5 +1,5 @@
 {
-    "name": "jbouzekri/config-knp-menu-bundle",
+    "name": "diabl0/config-knp-menu-bundle",
     "type": "symfony-bundle",
     "description": "Configure your knp menus with yaml files accross your project bundles",
     "keywords": ["Knp", "UI", "User Interface", "Menu", "Navigation", "Symfony"],
