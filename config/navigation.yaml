@@ -1,0 +1,19 @@
+config_knp_menu:
+  menu:
+    # main menu
+    main:
+      tree:
+        home:
+          label: Home
+          route: index
+        one:
+          label: One
+          attributes:
+            icon: fa-award
+          children:
+            oo:
+              label: Eleven
+              uri: "#11"
+            ot:
+              label: Twelfe
+              uri: "#12"

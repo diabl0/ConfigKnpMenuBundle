@@ -7,52 +7,94 @@ ConfigKnpMenuBundle
 Introduction
 ------------
 
-This bundle provides a way to configure your knp menus in your bundles yml configuration.
+This bundle provides a way to configure your knp menus via yaml configuration file.
 
 For more information on knp menu, read :
 * The [Knp Menu Documentation](https://github.com/KnpLabs/KnpMenu/blob/master/README.markdown)
 * The [Knp Menu Bundle Documentation](https://github.com/KnpLabs/KnpMenuBundle/blob/master/README.md)
 
-This bundle was inspired by the [OroNavigationBundle](https://github.com/orocrm/platform/tree/master/src/Oro/Bundle/NavigationBundle) in oro crm.
+This bundle was inspired by the [OroNavigationBundle](https://github.com/orocrm/platform/tree/master/src/Oro/Bundle/NavigationBundle) and [jbouzekri/ConfigKnpMenuBundle](https://github.com/jbouzekri/ConfigKnpMenuBundle)
 
 Installation
 ------------
 
 You can use composer for installation.
 
-Add the repository to the composer.json file of your project and run the update or install command.
-
-``` json
-{
-    "require": {
-        "jbouzekri/config-knp-menu-bundle": "3.0.0"
-    }
-}
-```
-
-Then enable it in your AppKernel.php with the KnpMenuBundle :
-``` php
-$bundles = array(
-    ...
-    new Knp\Bundle\MenuBundle\KnpMenuBundle(),
-    new CKMB\Bundle\ConfigKnpMenuBundle\JbConfigKnpMenuBundle(),
-);
+```bash
+composer require diabl0/config-knp-menu-bundle
 ```
 
 Documentation
 -------------
 
-In order to use this bundle, you must define your menu configuration in a **navigation.yml** file in your bundle.
+In order to use this bundle, you must define your menu configuration in a **navigation.yaml** file in your configs (usually /config/packages/navigation.yaml). If you are using Flex, this config is created for you.
+
+format :
+``` yml
+# Default configuration for extension with alias: "config_knp_menu"
+config_knp_menu:
+    menu:
+        name:
+            tree:
+
+                # Prototype
+                name:
+                    route:                ~
+                    routeParameters:      []
+                    uri:                  ~
+                    label:                ~
+                    display:              true
+                    displayChildren:      true
+                    order:                ~
+                    attributes:           []
+                    linkAttributes:       []
+                    childrenAttributes:   []
+                    labelAttributes:      []
+                    roles:                []
+                    extras:               []
+                    children:
+
+                        # Prototype
+                        name:
+                            route:                ~
+                            routeParameters:      []
+                            uri:                  ~
+                            label:                ~
+                            display:              true
+                            displayChildren:      true
+                            order:                ~
+                            attributes:           []
+                            linkAttributes:       []
+                            childrenAttributes:   []
+                            labelAttributes:      []
+                            roles:                []
+                            extras:               []
+                            children:
+
+```
 
 Example :
 ``` yml
-my_mega_menu:
-    tree:
-        first_level_item:
-            label: My first label
-            children:
-                second_level_item:
-                    label: My second level
+config_knp_menu:
+  menu:
+    # main menu
+    my_mega_menu:
+      tree:
+        home:
+          label: Home
+          route: index
+        one:
+          label: One
+          attributes:
+            icon: fa-award
+          children:
+            oo:
+              label: Eleven
+              uri: "#11"
+            ot:
+              label: Twelfe
+              uri: "#12"
+
 ```
 
 It will configure a provider for knp menu factory. You can then use your my_mega_menu in twig as a classic knp menu :
@@ -67,16 +109,14 @@ Configuration
 This is the available configuration definition for an item.
 
 ``` yml
-my_mega_menu:
-    childrenAttributes: An array of attributes passed to the root ul tag
-    tree:
-        first_level_item:
+        menu_key:
             uri: "An uri. Use it if you do not define route parameter"
             route: "A sf2 route without @"
             routeParameters: "an array of parameters to pass to the route"
             label: "My first label"
             order: An integer to sort the item in his level.
-            attributes: An array of attributes passed to the knp item
+            attributes: An array of attributes passed to the knp item. 
+                        You can use it to pass additional data to twig template like icons, styles etc.
             linkAttributes: An array of attributes passed to the a tag
             childrenAttributes: An array of attributes passed to the children block
             labelAttributes: An array of attributes passed to the label tag
@@ -100,9 +140,23 @@ For root menu item, display or hide it in your twig template.
 For children items, if you didn't add the roles key, they will be displayed.
 Else it will passed the array of key to the isGranted method and check if you have rights on the the item.
 
-Issues
-------
+Breadcrumbs
+-----------
 
-* tree sub configuration property :
-In the navigation.yml file, you must defined a tree key below your menu name. It provides another level to keep the first level item key after configuration parsing.
-If someone know how to remove it, let me know.
+Simple example:
+```twig
+                        <ul>
+
+                            {% for breadcrumb_item in knp_menu_get_breadcrumbs_array(knp_menu_get_current_item('main')) %}
+                                <li class="m-nav__item">
+                                    {% if  breadcrumb_item.uri is not empty %}
+                                        <a href="{{ breadcrumb_item.uri }}">
+                                    {% endif %}
+                                    <span class="m-nav__link-text">{{ breadcrumb_item.label }}</span>
+                                    {% if  breadcrumb_item.uri is not empty %}
+                                        </a>
+                                    {% endif %}
+                                </li>
+                            {% endfor %}
+                        </ul>
+```
