@@ -90,11 +90,15 @@ config_knp_menu:
           children:
             oo:
               label: Eleven
-              uri: "#11"
+              route: app_one
+              extras:
+                routes:
+                  - app_one_list
+                  - app_one_edit
+                  - app_one_new
             ot:
               label: Twelfe
               uri: "#12"
-
 ```
 
 It will configure a provider for knp menu factory. You can then use your my_mega_menu in twig as a classic knp menu :

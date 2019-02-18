@@ -68,7 +68,7 @@ class MenuNodeDefinition extends ArrayNodeDefinition
                         ->end()
                     ->end()
                     ->arrayNode('extras')
-                        ->prototype('scalar')
+                        ->prototype('variable')
                         ->end()
                     ->end()
                     ->menuNode('children')
