@@ -132,7 +132,7 @@ class ConfigurationMenuProvider implements MenuProviderInterface
             $this->createItem($menu, $key, $childConfiguration);
         }
 
-        $this->dispatcher->dispatch(ConfigureMenuEvent::CONFIGURE, new ConfigureMenuEvent($this->factory, $menu));
+        $this->dispatcher->dispatch(new ConfigureMenuEvent($this->factory, $menu), ConfigureMenuEvent::CONFIGURE);
 
         return $menu;
     }
