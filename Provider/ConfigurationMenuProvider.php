@@ -110,7 +110,7 @@ class ConfigurationMenuProvider implements MenuProviderInterface
     /**
      * {@inheritDoc}
      */
-    public function get($name, array $options = array())
+    public function get(string $name, array $options = []): ItemInterface
     {
         // Create menu root item
         $menu = $this->factory->createItem($name);
@@ -138,7 +138,7 @@ class ConfigurationMenuProvider implements MenuProviderInterface
     /**
      * {@inheritDoc}
      */
-    public function has($name, array $options = array())
+    public function has(string $name, array $options = []): bool
     {
         return !empty($this->configuration[$name]);
     }
