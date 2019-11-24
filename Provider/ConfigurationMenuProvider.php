@@ -11,10 +11,12 @@
 /**
  * @namespace
  */
+
 namespace CKMB\Bundle\ConfigKnpMenuBundle\Provider;
 
 use CKMB\Bundle\ConfigKnpMenuBundle\Event\ConfigureMenuEvent;
 use Knp\Menu\FactoryInterface;
+use Knp\Menu\ItemInterface;
 use Knp\Menu\Provider\MenuProviderInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
@@ -68,7 +70,7 @@ class ConfigurationMenuProvider implements MenuProviderInterface
         FactoryInterface $factory,
         EventDispatcherInterface $dispatcher,
         AuthorizationCheckerInterface $authorizationChecker,
-        array $configuration = array()
+        array $configuration = []
     ) {
         $this->factory = $factory;
         $this->dispatcher = $dispatcher;
@@ -175,13 +177,16 @@ class ConfigurationMenuProvider implements MenuProviderInterface
      */
     protected function sortItems(&$items)
     {
-        $this->safeUaSortItems($items, function ($item1, $item2) {
-            if (empty($item1['order']) || empty($item2['order']) || $item1['order'] == $item2['order']) {
-                return 0;
-            }
+        $this->safeUaSortItems(
+            $items,
+            function ($item1, $item2) {
+                if (empty($item1['order']) || empty($item2['order']) || $item1['order'] == $item2['order']) {
+                    return 0;
+                }
 
-            return ($item1['order'] < $item2['order']) ? -1 : 1;
-        });
+                return ($item1['order'] < $item2['order']) ? -1 : 1;
+            }
+        );
     }
 
     /**
@@ -211,7 +216,7 @@ class ConfigurationMenuProvider implements MenuProviderInterface
             return;
         }
 
-        $array = array();
+        $array = [];
         reset($array1);
         reset($array2);
         while (current($array1) && current($array2)) {
