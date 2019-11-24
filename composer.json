@@ -6,7 +6,7 @@
     "homepage": "https://github.com/diabl0/ConfigKnpMenuBundle",
     "license": "MIT",
     "require": {
-        "knplabs/knp-menu-bundle": "^2.0",
+        "knplabs/knp-menu-bundle": "dev-master",
         "symfony/event-dispatcher": "^4.0 | ^5.0",
         "symfony/yaml": "^4.0 | ^5.0"
     },
